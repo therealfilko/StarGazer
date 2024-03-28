@@ -1,0 +1,50 @@
+# Binärdateien für Programme und Plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+
+# Ausgabedateien
+*.out
+*.o
+*.obj
+
+# Verzeichnisse, die von Go Tools generiert werden
+/bin/
+/pkg/
+
+# Abhängigkeitsverzeichnisse (entferne das Kommentarzeichen, wenn der Vendor-Modus benutzt wird)
+#/vendor/
+
+# IDE-Verzeichnisse und Dateien
+.idea/
+*.swp
+*.swo
+.vscode/
+*.sublime-workspace
+
+# Betriebssystemdateien
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Umgebungsdateien
+.env
+
+# Logdateien
+*.log
+
+# Andere Dateien, die nicht eingeschlossen werden sollten
+*.gz
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.bz2
+*.db
