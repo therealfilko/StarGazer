@@ -6,7 +6,6 @@ StarGazer is a sleek CLI tool designed for discovering GitHub's most starred pro
 ## Features
 - Find GitHub repositories with the most stars in a specified date range.
 - Simple CLI for easy and flexible use.
-- Customizable search parameters, including language and tags.
 
 ## Getting Started
 Clone this repo to embark on your star-gazing adventure:
