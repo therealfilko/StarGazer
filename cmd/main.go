@@ -20,8 +20,8 @@ func main()  {
     query := "created:" + startDate + ".." + endDate
 
     fmt.Printf("Searchquery: %s\n", query)
-    fmt.Printf("Anfangsdatum: %s\n", startDate)
-    fmt.Printf("Enddatum: %s\n", endDate)
+    fmt.Printf("Startdate: %s\n", startDate)
+    fmt.Printf("Enddate: %s\n", endDate)
 
     searchRepositories(client, query)
 }
@@ -43,17 +43,17 @@ func searchRepositories(client *github.Client, query string) {
         log.Fatal("Couldn't find it")
     }
 
-    fmt.Printf("Gefunden Repos: %d\n", *result.Total)
+    fmt.Printf("Found: %d repos \n", *result.Total)
     for _, repo := range result.Repositories {
-        fmt.Printf("Name: %s, Sterne: %d, URL: %s\n", *repo.Name, *repo.StargazersCount, *repo.HTMLURL)
+        fmt.Printf("Name: %s, Stars: %d, URL: %s\n", *repo.Name, *repo.StargazersCount, *repo.HTMLURL)
     }
 }
 
 func testAuthentication(client *github.Client) {
     user, _, err := client.Users.Get(context.Background(), "")
     if err != nil {
-        log.Fatalf("Authentifizierungsfehler: %v", err)
+        log.Fatalf("Error authenticating: %v", err)
     } else {
-        fmt.Printf("Erfolgreich authentifiziert als Benutzer: %s\n", *user.Login)
+        fmt.Printf("Authenticated as: %s\n", *user.Login)
     }
 }
