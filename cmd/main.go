@@ -10,11 +10,6 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// 1. ich muss env richtig einbinden also mein Token | DONE
-// 2. danach authentifizieren | DONE
-// 3. Suche definieren
-// 4. testen
-
 func main()  {
     token := getToken()
     client := github.NewClient(nil).WithAuthToken(token)
@@ -22,11 +17,13 @@ func main()  {
     startDate := os.Args[1]
     endDate := os.Args[2]
 
+    query := "created:" + startDate + ".." + endDate
+
+    fmt.Printf("Searchquery: %s\n", query)
     fmt.Printf("Anfangsdatum: %s\n", startDate)
     fmt.Printf("Enddatum: %s\n", endDate)
 
-    // Funktion anpassen bis es geht
-    searchRepositories(client)
+    searchRepositories(client, query)
 }
 
 func getToken() string  { 
@@ -37,12 +34,11 @@ func getToken() string  {
     return os.Getenv("AUTH_TOKEN")
 }
 
-func searchRepositories(client *github.Client) {
+func searchRepositories(client *github.Client, query string) {
     ctx := context.Background()
-    query := "go-github"
 
     opts := &github.SearchOptions{Sort: "stars", Order: "desc"}
-    result, _, err := client.Search.Repositories(ctx, query, opts) // 2 parameter ist query, hiermit kann ich halt die suche starten
+    result, _, err := client.Search.Repositories(ctx, query, opts)
     if err != nil {
         log.Fatal("Couldn't find it")
     }
